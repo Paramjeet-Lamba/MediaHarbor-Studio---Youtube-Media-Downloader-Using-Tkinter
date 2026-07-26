@@ -50,34 +50,6 @@ MediaHarbor Studio lets you fetch, preview, and download YouTube videos and play
 
 ---
 
-## 📦 Installation
-
-### Prerequisites
-- Python 3.9 or higher
-- [FFmpeg](https://ffmpeg.org/download.html) installed and available on your system `PATH`
-
-### Steps
-
-```bash
-# Clone the repository
-git clone https://github.com/<your-username>/mediaharbor-studio.git
-cd mediaharbor-studio
-
-# Create a virtual environment (recommended)
-python -m venv venv
-source venv/bin/activate      # On Windows: venv\Scripts\activate
-
-# Install dependencies
-pip install -r requirements.txt
-
-# Run the app
-python main.py
-```
-
-> On first launch, MediaHarbor Studio checks for FFmpeg automatically and shows its status (`ffmpeg: detected ✅`) in the footer.
-
----
-
 ## 🚀 Usage
 
 1. Copy a YouTube video or playlist link
@@ -90,22 +62,6 @@ python main.py
    - Custom save location via **Change**
 5. Click **Download Video** or **Download MP3**
 6. Track progress in real time, then open the file directly from **Open Download Folder**
-
----
-
-## 🗂️ Project Structure
-
-```
-mediaharbor-studio/
-├── main.py                # Application entry point
-├── ui/                    # CustomTkinter UI components
-├── core/                  # yt-dlp / ffmpeg download & conversion logic
-├── assets/                # Icons, logo, and static assets
-├── requirements.txt
-└── README.md
-```
-
-*(Adjust this section to match your actual repo layout.)*
 
 ---
 
@@ -137,9 +93,9 @@ Distributed under the MIT License. See `LICENSE` for more information.
 
 **Paramjeet Lamba**
 
-- GitHub: [@your-username](https://github.com/your-username)
-- LinkedIn: [Your LinkedIn](https://linkedin.com/in/your-profile)
+- GitHub: [@your-username](https://github.com/Paramjeet-Lamba)
+- LinkedIn: [Your LinkedIn]([https://linkedin.com/in/your-profile](https://www.linkedin.com/in/paramjeet-lamba-843091329/))
 
 ---
 
-<p align="center">Made with ❤️ using Python & CustomTkinter</p>
+<p align="center">Made with Paramjeet Lamba using Python & CustomTkinter</p>
