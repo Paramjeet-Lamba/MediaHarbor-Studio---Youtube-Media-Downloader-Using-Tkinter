@@ -13,19 +13,18 @@ print("WINDOW CREATED.....")
 # ======================================================================
 
 COLORS = {
-    "bg": "#0A0A12",
-    "bg2": "#131320",
-    "card": "#1B1B2B",
-    "card_hover": "#242438",
-    "accent": "#7C5CFC",
-    "accent_hover": "#6845E8",
-    "accent2": "#22D3EE",
-    "success": "#2DD4A7",
-    "warning": "#FBBF24",
-    "error": "#FB6F92",
-    "text": "#F5F5FA",
-    "text2": "#9391A8",
-    "border": "#2A2A3D",
+    "bg": "#0F172A",
+    "bg2": "#1E293B",
+    "card": "#334155",
+    "card_hover": "#3B4A63",
+    "accent": "#3B82F6",
+    "accent_hover": "#2563EB",
+    "success": "#22C55E",
+    "warning": "#FACC15",
+    "error": "#EF4444",
+    "text": "#F8FAFC",
+    "text2": "#CBD5E1",
+    "border": "#475569",
 }
 
 FONT_FAMILY = "Segoe UI"  # falls back gracefully on macOS/Linux to a system sans-serif
@@ -101,10 +100,10 @@ def ui(fn, *a, **kw):
 # ======================================================================
 
 class Card(ctk.CTkFrame):
-    """A rounded, glass-like elevated container used throughout the dashboard."""
+    """A rounded elevated container used throughout the dashboard."""
     def __init__(self, master, **kw):
         kw.setdefault("fg_color", COLORS["bg2"])
-        kw.setdefault("corner_radius", 20)
+        kw.setdefault("corner_radius", 16)
         kw.setdefault("border_width", 1)
         kw.setdefault("border_color", COLORS["border"])
         super().__init__(master, **kw)
@@ -114,20 +113,20 @@ class PrimaryButton(ctk.CTkButton):
     def __init__(self, master, **kw):
         kw.setdefault("fg_color", COLORS["accent"])
         kw.setdefault("hover_color", COLORS["accent_hover"])
-        kw.setdefault("text_color", "#FFFFFF")
-        kw.setdefault("corner_radius", 14)
-        kw.setdefault("height", 46)
+        kw.setdefault("text_color", COLORS["text"])
+        kw.setdefault("corner_radius", 12)
+        kw.setdefault("height", 44)
         kw.setdefault("font", F(14, "bold"))
         super().__init__(master, **kw)
 
 
 class SecondaryButton(ctk.CTkButton):
     def __init__(self, master, **kw):
-        kw.setdefault("fg_color", COLORS["accent2"])
-        kw.setdefault("hover_color", "#0FB8D4")
-        kw.setdefault("text_color", "#04212A")
-        kw.setdefault("corner_radius", 14)
-        kw.setdefault("height", 46)
+        kw.setdefault("fg_color", COLORS["success"])
+        kw.setdefault("hover_color", "#1DA750")
+        kw.setdefault("text_color", "#04210C")
+        kw.setdefault("corner_radius", 12)
+        kw.setdefault("height", 44)
         kw.setdefault("font", F(14, "bold"))
         super().__init__(master, **kw)
 
@@ -139,7 +138,7 @@ class GhostButton(ctk.CTkButton):
         kw.setdefault("text_color", COLORS["text2"])
         kw.setdefault("border_width", 1)
         kw.setdefault("border_color", COLORS["border"])
-        kw.setdefault("corner_radius", 14)
+        kw.setdefault("corner_radius", 12)
         kw.setdefault("height", 40)
         kw.setdefault("font", F(13))
         super().__init__(master, **kw)
@@ -150,8 +149,8 @@ class DangerButton(ctk.CTkButton):
         kw.setdefault("fg_color", COLORS["card"])
         kw.setdefault("hover_color", COLORS["error"])
         kw.setdefault("text_color", COLORS["text"])
-        kw.setdefault("corner_radius", 14)
-        kw.setdefault("height", 46)
+        kw.setdefault("corner_radius", 12)
+        kw.setdefault("height", 44)
         kw.setdefault("font", F(14, "bold"))
         super().__init__(master, **kw)
 
@@ -199,25 +198,15 @@ app.grid_columnconfigure(0, weight=1)
 #  HEADER
 # ======================================================================
 
-header = ctk.CTkFrame(app, fg_color=COLORS["bg2"], height=68, corner_radius=0)
+header = ctk.CTkFrame(app, fg_color=COLORS["bg2"], height=64, corner_radius=0)
 header.grid(row=0, column=0, sticky="ew")
 header.grid_propagate(False)
 header.grid_columnconfigure(1, weight=1)
 
-header_accent_line = ctk.CTkFrame(app, fg_color=COLORS["accent"], height=2, corner_radius=0)
-header_accent_line.grid(row=0, column=0, sticky="sew")
-
 brand = ctk.CTkFrame(header, fg_color="transparent")
-brand.grid(row=0, column=0, padx=22, pady=10, sticky="w")
-
-logo_badge = ctk.CTkLabel(brand, text="🎬", font=F(18), text_color="#FFFFFF",
-                           fg_color=COLORS["accent"], corner_radius=12, width=38, height=38)
-logo_badge.grid(row=0, column=0, rowspan=2, padx=(0, 12))
-
-ctk.CTkLabel(brand, text="MediaHarbor Studio", font=F(19, "bold"), text_color=COLORS["text"]).grid(
-    row=0, column=1, sticky="w")
-ctk.CTkLabel(brand, text="Download · Convert · Organize", font=F(11), text_color=COLORS["accent2"]).grid(
-    row=1, column=1, sticky="w")
+brand.grid(row=0, column=0, padx=20, pady=10, sticky="w")
+ctk.CTkLabel(brand, text="🎬 MediaHarbor Studio", font=F(20, "bold"), text_color=COLORS["text"]).pack(anchor="w")
+ctk.CTkLabel(brand, text="Download • Convert • Organize", font=F(11), text_color=COLORS["accent"]).pack(anchor="w")
 
 header_actions = ctk.CTkFrame(header, fg_color="transparent")
 header_actions.grid(row=0, column=2, padx=20, pady=10, sticky="e")
@@ -284,20 +273,19 @@ def select_page(page_id):
             frame.pack_forget()
 
 
-ctk.CTkLabel(sidebar, text="NAVIGATION", font=F(10, "bold"), text_color=COLORS["text2"]).pack(anchor="w", padx=22, pady=(22, 10))
+ctk.CTkLabel(sidebar, text="NAVIGATION", font=F(10, "bold"), text_color=COLORS["text2"]).pack(anchor="w", padx=20, pady=(20, 8))
 for pid, label in NAV_ITEMS:
-    b = ctk.CTkButton(sidebar, text=label, anchor="w", corner_radius=14, height=42,
+    b = ctk.CTkButton(sidebar, text=label, anchor="w", corner_radius=10, height=40,
                        fg_color="transparent", hover_color=COLORS["card_hover"],
-                       text_color=COLORS["text2"], font=F(13, "bold"),
+                       text_color=COLORS["text2"], font=F(13),
                        command=lambda p=pid: select_page(p))
-    b.pack(fill="x", padx=14, pady=4)
+    b.pack(fill="x", padx=12, pady=3)
     nav_buttons[pid] = b
 
-sidebar_footer = Card(sidebar, fg_color=COLORS["card"])
+sidebar_footer = ctk.CTkFrame(sidebar, fg_color="transparent")
 sidebar_footer.pack(side="bottom", fill="x", padx=16, pady=16)
-ctk.CTkLabel(sidebar_footer, text="ffmpeg " + ("● detected" if has_ffmpeg() else "● not found"),
-             font=F(10, "bold"), text_color=(COLORS["success"] if has_ffmpeg() else COLORS["warning"]),
-             wraplength=160, justify="left").pack(anchor="w", padx=12, pady=10)
+ctk.CTkLabel(sidebar_footer, text="ffmpeg: " + ("detected ✅" if has_ffmpeg() else "not found ⚠"),
+             font=F(10), text_color=COLORS["text2"], wraplength=170, justify="left").pack(anchor="w")
 
 # ---------------- Content area (each "page" is a frame; only Home is fully interactive,
 # the rest are lightweight companion views built from the same underlying state) ----------------
@@ -324,7 +312,7 @@ ctk.CTkLabel(url_card, text="Add a link", font=F(14, "bold"), text_color=COLORS[
     row=0, column=0, columnspan=4, sticky="w", padx=18, pady=(14, 6))
 
 url_entry = ctk.CTkEntry(url_card, placeholder_text="Paste YouTube video or playlist URL...",
-                          height=46, corner_radius=14, border_width=1, border_color=COLORS["border"],
+                          height=44, corner_radius=12, border_width=1, border_color=COLORS["border"],
                           fg_color=COLORS["bg"], font=F(13))
 url_entry.grid(row=1, column=0, sticky="ew", padx=(18, 8), pady=(0, 16))
 
@@ -477,7 +465,7 @@ status_lbl.grid(row=0, column=1, sticky="w", padx=(4, 0))
 progress_pct_lbl = ctk.CTkLabel(status_row, text="", font=F(12, "bold"), text_color=COLORS["accent"])
 progress_pct_lbl.grid(row=0, column=2, sticky="e")
 
-progress_bar = ctk.CTkProgressBar(prog_card, progress_color=COLORS["accent"], fg_color=COLORS["card"], height=12, corner_radius=8)
+progress_bar = ctk.CTkProgressBar(prog_card, progress_color=COLORS["accent"], fg_color=COLORS["card"], height=10, corner_radius=6)
 progress_bar.set(0)
 progress_bar.grid(row=1, column=0, sticky="ew", padx=18, pady=4)
 
@@ -624,10 +612,9 @@ ctk.CTkLabel(settings_card, text="Accent color", font=F(12), text_color=COLORS["
     row=1, column=0, sticky="w", padx=18, pady=14)
 accent_row = ctk.CTkFrame(settings_card, fg_color="transparent")
 accent_row.grid(row=1, column=1, sticky="w", padx=(0, 18), pady=14)
-for c in ["#7C5CFC", "#22D3EE", "#2DD4A7", "#FB6F92", "#FBBF24"]:
-    ctk.CTkButton(accent_row, text="", width=28, height=28, corner_radius=14, fg_color=c,
-                  hover_color=c, border_width=2, border_color=COLORS["bg"],
-                  command=lambda col=c: set_accent(col)).pack(side="left", padx=3)
+for c in ["#3B82F6", "#22C55E", "#F97316", "#A855F7", "#EF4444"]:
+    ctk.CTkButton(accent_row, text="", width=26, height=26, corner_radius=13, fg_color=c,
+                  hover_color=c, command=lambda col=c: set_accent(col)).pack(side="left", padx=3)
 
 
 def set_accent(color):
