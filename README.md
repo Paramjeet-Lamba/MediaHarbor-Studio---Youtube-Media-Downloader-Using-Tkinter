@@ -36,7 +36,9 @@ MediaHarbor Studio lets you fetch, preview, and download YouTube videos and play
 |---|---|
 | Fine-tune video quality, audio format, subtitles, and save location | Quick access to your most recent downloads with one click |
 
-*(Add your own screenshots to a `/screenshots` folder and reference them here, e.g. `![Home Screen](screenshots/home.png)`)*
+![Home Screen](screenshots/01_home page.png)
+
+
 
 ---
 
